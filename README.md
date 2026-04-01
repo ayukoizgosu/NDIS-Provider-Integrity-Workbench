@@ -1,6 +1,6 @@
 # NDIS Provider Integrity Workbench
 
-Public-data pilot scaffold for structuring NDIS enforcement actions, enriching them with public business register data, and preparing an analyst-facing review workbench for a B2G pilot.
+Public-record review workbench for structuring NDIS enforcement actions, enriching them with business register data, and supporting analyst-led case review.
 
 This implementation follows the revised brief in `NDIS/02_revised_antigravity_brief.md` with one hard boundary:
 
@@ -172,10 +172,10 @@ streamlit run dashboard.py
 Current behavior:
 
 - loads `output/entity_profiles.csv`, `output/match_review_queue.csv`, `output/phoenix_candidates.csv`, and `normalized/entities_enriched.csv`
-- provides filtered overview metrics, review buckets, related-business inspection, and a pilot case desk
+- provides filtered overview metrics, review buckets, related-business inspection, and a case desk
 - supports entity drill-down into action history and registry detail
 - lets an analyst create a case from a lookup result
-- provides local pilot access profiles for `Analyst`, `Manager`, and `Admin` views
+- provides local access profiles for `Analyst`, `Manager`, and `Admin` views
 - stores local notes, owner, priority, due date, status, decision, and activity history in `data/app.db`
 - prepares an agent draft for each case, including a suggested next step, summary, and rationale
 - uses the configured LLM case-prep agent when `NDIS_AGENT_API_KEY` and `NDIS_AGENT_MODEL` are set
@@ -185,7 +185,7 @@ Current behavior:
 - captures source links for each case
 - supports case attachments in `data/attachments/`
 - exports HTML case briefs into `output/case_briefs/`
-- renders methodology, pilot scope, security, support, and test-plan notes inside the UI
+- renders methodology, scope, security, support, and test-plan notes inside the UI
 
 This workbench is local-first. It does not rerun the pipeline itself.
 
@@ -202,13 +202,13 @@ This workbench is local-first. It does not rerun the pipeline itself.
 
 ### 10. Pilot access profiles
 
-The local MVP uses seeded pilot access profiles instead of enterprise identity:
+The local MVP uses seeded access profiles instead of enterprise identity:
 
 - `Demo Analyst (Analyst)` focuses the desk on that analyst's assigned cases
 - `Demo Manager (Manager)` exposes team workload and queue status views
 - `Pilot Admin (Admin)` uses the manager-style view without adding extra workflow logic
 
-Hosted pilots should replace this with the buyer's identity provider.
+Hosted deployments should replace this with the organization identity provider.
 
 ### 11. LLM case-prep agent
 
@@ -231,7 +231,7 @@ If no model is set, the agent will try to auto-discover a usable alias from the 
 
 If the agent is not configured, the workbench still runs and uses deterministic draft rules instead.
 
-### 12. Included pilot docs
+### 12. Included project docs
 
 The `About This Tool` screen renders the following notes directly from `docs/`:
 
@@ -310,5 +310,5 @@ The `About This Tool` screen renders the following notes directly from `docs/`:
 - ASIC enrichment relies on the current-company CSV only.
 - Phoenix candidates are heuristics for review, not proof.
 - Second-pass alias and state-mismatch matches remain reviewable by design even when they are resolved into ABN-linked profiles.
-- Director-overlap analysis remains intentionally excluded from this public-record pilot.
+- Director-overlap analysis remains intentionally excluded from this public-record workbench.
 - Access profiles are local demo roles only. They are not a substitute for SSO, RBAC, or hosted audit controls.

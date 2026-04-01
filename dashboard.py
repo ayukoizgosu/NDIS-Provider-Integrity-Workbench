@@ -43,6 +43,9 @@ BASE_DIR = Path(__file__).resolve().parent
 DOCS_DIR = BASE_DIR / "docs"
 OUTPUT_DIR = BASE_DIR / "output"
 NORMALIZED_DIR = BASE_DIR / "normalized"
+SAMPLE_DATA_DIR = BASE_DIR / "sample_data"
+SAMPLE_OUTPUT_DIR = SAMPLE_DATA_DIR / "output"
+SAMPLE_NORMALIZED_DIR = SAMPLE_DATA_DIR / "normalized"
 
 APP_TITLE = "NDIS Provider Integrity Workbench"
 DEFAULT_ANALYST = "Demo Analyst"
@@ -597,7 +600,7 @@ def friendly_event_actor(event: Mapping[str, Any]) -> str:
     actor_type = empty_text(event.get("actor_type"), "").lower()
     actor = empty_text(event.get("actor"), "")
     if actor_type == "agent":
-        if actor in {"deterministic-v1", "Pilot Agent"}:
+        if actor in {"deterministic-v1", "Rules Engine"}:
             return "Rules engine"
         if actor:
             return f"LLM ({actor})"
@@ -741,7 +744,7 @@ def describe_case_event(event: Mapping[str, Any]) -> tuple[str, str]:
 
     if event_type == "agent_draft_prepared":
         actor = empty_text(event.get("actor"), "")
-        is_fallback = actor in {"deterministic-v1", "Pilot Agent"} or "failed" in after_value.lower()
+        is_fallback = actor in {"deterministic-v1", "Rules Engine"} or "failed" in after_value.lower()
         if is_fallback:
             return "Fallback draft prepared", after_value or "A local rules-based draft was prepared."
         return "LLM draft prepared", after_value or "Prepared from current public records."
@@ -778,11 +781,19 @@ def load_csv(path: Path) -> pd.DataFrame:
 
 
 @st.cache_data(show_spinner=False)
+def load_first_available(paths: list[Path]) -> pd.DataFrame:
+    for path in paths:
+        if path.exists():
+            return pd.read_csv(path, dtype=str).fillna("")
+    return pd.DataFrame()
+
+
+@st.cache_data(show_spinner=False)
 def load_data() -> dict[str, pd.DataFrame]:
-    profiles = load_csv(OUTPUT_DIR / "entity_profiles.csv")
-    review_queue = load_csv(OUTPUT_DIR / "match_review_queue.csv")
-    phoenix = load_csv(OUTPUT_DIR / "phoenix_candidates.csv")
-    enriched = load_csv(NORMALIZED_DIR / "entities_enriched.csv")
+    profiles = load_first_available([OUTPUT_DIR / "entity_profiles.csv", SAMPLE_OUTPUT_DIR / "entity_profiles.csv"])
+    review_queue = load_first_available([OUTPUT_DIR / "match_review_queue.csv", SAMPLE_OUTPUT_DIR / "match_review_queue.csv"])
+    phoenix = load_first_available([OUTPUT_DIR / "phoenix_candidates.csv", SAMPLE_OUTPUT_DIR / "phoenix_candidates.csv"])
+    enriched = load_first_available([NORMALIZED_DIR / "entities_enriched.csv", SAMPLE_NORMALIZED_DIR / "entities_enriched.csv"])
 
     for frame_name in ["profiles", "review_queue", "phoenix", "enriched"]:
         frame = locals()[frame_name]
@@ -895,7 +906,7 @@ def apply_profile_filters(profiles: pd.DataFrame) -> tuple[pd.DataFrame, Mapping
         st.markdown("### Access")
         current_user = resolve_current_user()
         st.caption(
-            f"Role: {current_user_role(current_user)}. This local pilot uses access profiles; hosted pilots should use enterprise identity."
+            f"Role: {current_user_role(current_user)}. This local environment uses access profiles; hosted deployments should use enterprise identity."
         )
 
         st.markdown("### Find A Record")
@@ -997,9 +1008,9 @@ def render_header(
             <div class="hero-title">{escape(APP_TITLE)}</div>
             <div class="hero-copy">
                 Search a provider or person, review enforcement history, open a case, and capture analyst notes in one place.
-                This pilot uses public records only. Current lookup results show <strong>{len(profiles):,}</strong> records,
+                This environment uses public records only. Current lookup results show <strong>{len(profiles):,}</strong> records,
                 <strong>{len(review_queue):,}</strong> items needing review, <strong>{len(phoenix):,}</strong> related-business signals,
-                and <strong>{int(case_metrics.get('open_cases', 0)):,}</strong> open pilot cases. Latest action in scope:
+                and <strong>{int(case_metrics.get('open_cases', 0)):,}</strong> open cases. Latest action in scope:
                 <strong>{escape(freshness_text)}</strong>.
             </div>
         </div>
@@ -1581,7 +1592,7 @@ def render_case_detail(
             summary_value = st.text_area(
                 "Analyst summary",
                 value=summary_for_display,
-                help="Keep this to plain-language notes a supervisor or buyer can scan quickly. The agent draft sits below and can be accepted or edited separately.",
+                help="Keep this to plain-language notes a reviewer can scan quickly. The agent draft sits below and can be accepted or edited separately.",
                 height=110,
             )
             decision_reason_value = st.text_area(

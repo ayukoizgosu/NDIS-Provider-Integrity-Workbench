@@ -4,106 +4,105 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NDIS Provider Integrity Workbench</title>
-  <meta name="description" content="Public-record provider integrity workbench for analyst review, casework, and exportable briefs.">
+  <meta name="description" content="Public-record review workbench for enforcement history, linked business records, related entities, and exportable case briefs.">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <main class="page">
     <section class="hero">
-      <p class="eyebrow">GitHub Pages Demo</p>
-      <h1>NDIS Provider Integrity Workbench</h1>
-      <p class="lede">
-        A public-record analyst workbench for reviewing NDIS enforcement history, linked business records,
-        related-business leads, and exportable case briefs.
-      </p>
+      <div>
+        <p class="eyebrow">Static Overview</p>
+        <h1>NDIS Provider Integrity Workbench</h1>
+        <p class="lede">
+          A review environment for public enforcement records, linked business context, related-entity screening,
+          and exportable case briefs.
+        </p>
+      </div>
       <div class="hero-actions">
-        <a class="button button-primary" href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench">Open Repo</a>
+        <a class="button button-primary" href="https://optiplex790.tailcac970.ts.net" target="_blank" rel="noreferrer">Open Live App</a>
+        <a class="button" href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench" target="_blank" rel="noreferrer">Open Repo</a>
         <a class="button" href="./demo-case.html">View Sample Brief</a>
       </div>
       <div class="hero-note">
-        GitHub Pages hosts this static product overview only. The live review app is a Streamlit service and is not served from Pages.
+        This GitHub Pages site hosts the product overview, visuals, and documentation. The interactive review app runs as a separate hosted Streamlit service.
       </div>
     </section>
 
-    <section class="grid grid-3">
-      <article class="card stat">
-        <h2>Lookup</h2>
-        <p>Search providers, people, ABNs, and ACNs against enforcement records and public register matches.</p>
-      </article>
-      <article class="card stat">
-        <h2>Casework</h2>
-        <p>Create cases, capture notes, track status and ownership, attach evidence, and export supervisor-ready briefs.</p>
-      </article>
-      <article class="card stat">
-        <h2>Agent Assist</h2>
-        <p>Generate draft summaries, evidence lists, register refresh notes, and related-business mini-briefs before analyst sign-off.</p>
-      </article>
+    <section class="grid grid-3 metrics">
+      <article class="card stat"><h2>Lookup</h2><p>Search providers, people, ABNs, and ACNs against public enforcement records and register matches.</p></article>
+      <article class="card stat"><h2>Case Desk</h2><p>Create cases, capture notes, attach evidence, track review state, and export structured briefs.</p></article>
+      <article class="card stat"><h2>Agent Assist</h2><p>Prepare summaries, evidence lists, live refresh notes, and related-business mini-briefs before analyst review.</p></article>
     </section>
 
     <section class="card section">
       <div class="section-head">
-        <p class="eyebrow">What It Does</p>
-        <h2>Pilot-Safe Analyst Workflow</h2>
+        <p class="eyebrow">Screens</p>
+        <h2>Interface Preview</h2>
       </div>
-      <div class="grid grid-2">
-        <div>
-          <h3>Current capability</h3>
-          <ul>
-            <li>NDIS enforcement record ingestion and normalization</li>
-            <li>ABN and ASIC public-register enrichment</li>
-            <li>Conservative related-business lead generation</li>
-            <li>Case desk with notes, attachments, and activity history</li>
-            <li>Live ABR refresh and ASIC snapshot checks</li>
-            <li>HTML brief export for supervisor review</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Current boundary</h3>
-          <ul>
-            <li>No claims, payment, or bank data</li>
-            <li>No automated enforcement decisions</li>
-            <li>No paid director extracts</li>
-            <li>No internal NDIA or Commission integrations</li>
-            <li>No production identity, hosting, or accreditation controls in this repo</li>
-          </ul>
-        </div>
+      <div class="gallery">
+        <figure class="shot">
+          <img src="./assets/overview.png" alt="Overview screen of the workbench">
+          <figcaption>Overview with queue counts, record volumes, and recent draft activity.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="./assets/case-desk.png" alt="Case desk screen of the workbench">
+          <figcaption>Case desk showing open work, case summaries, and editable review fields.</figcaption>
+        </figure>
       </div>
     </section>
 
     <section class="grid grid-2">
       <article class="card section">
-        <p class="eyebrow">Review Flow</p>
-        <h2>How A Case Moves</h2>
+        <div class="section-head">
+          <p class="eyebrow">Workflow</p>
+          <h2>How Work Moves</h2>
+        </div>
         <ol class="flow">
-          <li>Search a provider or person from the public-record view.</li>
-          <li>Create a case and pull the linked business evidence into the desk.</li>
-          <li>Run a live register refresh to capture ABR status and latest ASIC dataset context.</li>
-          <li>Review the agent draft, completed checks, evidence used, and analyst-judgment steps.</li>
-          <li>Export a brief for supervisor review or escalation.</li>
+          <li>Search a person or provider from the record view.</li>
+          <li>Create a case and pull the linked business context into the desk.</li>
+          <li>Run a live register refresh to capture the latest public business status.</li>
+          <li>Review the agent-prepared summary, evidence, and judgment steps.</li>
+          <li>Export a case brief with source links and review notes.</li>
         </ol>
       </article>
       <article class="card section">
-        <p class="eyebrow">Pages Links</p>
-        <h2>Reference Material</h2>
-        <ul class="link-list">
-          <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/README.md">README</a></li>
-          <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/docs/architecture.md">Architecture</a></li>
-          <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/docs/methodology.md">Methodology</a></li>
-          <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/docs/pilot_scope.md">Pilot Scope</a></li>
-          <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/docs/security_overview.md">Security Overview</a></li>
-          <li><a href="./demo-case.html">Sample Case Brief</a></li>
+        <div class="section-head">
+          <p class="eyebrow">Boundaries</p>
+          <h2>Current Scope</h2>
+        </div>
+        <ul class="bullet-list">
+          <li>Uses public records only.</li>
+          <li>Supports review and documentation, not automatic decisions.</li>
+          <li>Uses ABR data and ASIC public datasets, not paid director extracts.</li>
+          <li>Ships with static sample data for demonstration and hosted review flows.</li>
         </ul>
       </article>
     </section>
 
     <section class="card section">
-      <p class="eyebrow">Positioning</p>
-      <h2>What To Show Government Buyers</h2>
-      <p>
-        This repo is positioned as a provider-integrity workbench and public-record analyst support tool.
-        It is suitable for pilot discussion, analyst workflow demonstration, and evidence-led review conversations.
-        It should not be positioned as a production fraud platform or autonomous operational decision-maker.
-      </p>
+      <div class="section-head">
+        <p class="eyebrow">Architecture</p>
+        <h2>System Layout</h2>
+      </div>
+      <figure class="diagram">
+        <img src="./assets/architecture.svg" alt="System architecture diagram">
+        <figcaption>Public sources feed the matching layer, then the hosted case desk, local case store, and exported briefs.</figcaption>
+      </figure>
+    </section>
+
+    <section class="card section">
+      <div class="section-head">
+        <p class="eyebrow">Reference</p>
+        <h2>Docs</h2>
+      </div>
+      <ul class="link-list columns">
+        <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/README.md">README</a></li>
+        <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/docs/architecture.md">Architecture</a></li>
+        <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/docs/methodology.md">Methodology</a></li>
+        <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/docs/pilot_scope.md">Scope</a></li>
+        <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/docs/security_overview.md">Security Overview</a></li>
+        <li><a href="https://github.com/ayukoizgosu/NDIS-Provider-Integrity-Workbench/blob/main/docs/support_model.md">Support Model</a></li>
+      </ul>
     </section>
   </main>
 </body>

@@ -279,7 +279,7 @@ def build_case_context(
 
 def build_prompts(case_context: Mapping[str, Any], fallback_draft: Mapping[str, Any]) -> tuple[str, str]:
     system_prompt = (
-        'You prepare public-record case drafts for government integrity analysts. '
+        'You prepare public-record case drafts for analyst review teams. '
         'You are not deciding guilt, fraud, or enforcement. '
         'Return only a JSON object with these string fields: '
         'agent_summary, agent_recommended_priority, agent_recommended_status, '

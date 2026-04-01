@@ -1,6 +1,6 @@
 # Pilot Scope
 
-This pilot MVP is designed for showcase and workflow validation.
+This MVP is designed for workflow validation and demonstration.
 
 ## Included
 
@@ -11,7 +11,7 @@ This pilot MVP is designed for showcase and workflow validation.
 - Manual case creation, notes, and queue management
 - HTML case brief export
 
-## Not included in this pilot
+## Not included in this environment
 
 - Single sign-on
 - Internal agency data integrations
@@ -20,7 +20,7 @@ This pilot MVP is designed for showcase and workflow validation.
 - Director-overlap confirmation
 - Formal case management integrations
 
-## Success criteria for a pilot
+## Success criteria
 
 - Analysts can create and manage review cases.
 - Supervisors can inspect queue status and priorities.

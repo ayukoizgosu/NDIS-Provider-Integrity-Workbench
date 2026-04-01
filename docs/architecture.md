@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The NDIS Provider Integrity Workbench is a single-tenant pilot for analyst-assisted review of public NDIS enforcement records.
+The NDIS Provider Integrity Workbench is a single-tenant review environment for analyst-assisted review of public NDIS enforcement records.
 
 It is designed to help a reviewer:
 
@@ -26,7 +26,7 @@ The current implementation has four layers:
 
 ## Data Sources
 
-The pilot uses public records only:
+The current environment uses public records only:
 
 - NDIS Commission enforcement export
 - ABN Lookup public record pages and optional public web services
@@ -66,7 +66,7 @@ Provides the analyst-facing interface:
 - review queue
 - case desk
 - related-business review
-- pilot documentation
+- project documentation
 
 ### `src/export_case_brief.py`
 
@@ -83,7 +83,7 @@ Exports a readable HTML brief for a single case.
 
 ## Storage
 
-The pilot stores workflow state locally in `data/app.db`.
+The workbench stores workflow state locally in `data/app.db`.
 
 The database is used only for:
 
@@ -106,4 +106,4 @@ The architecture intentionally avoids:
 
 ## Pilot Fit
 
-This architecture is suitable for a pilot or proof-of-value environment where a small team wants to review public records, manage cases, and produce structured briefs without touching internal NDIA systems.
+This architecture is suitable for a scoped review environment where a small team wants to review public records, manage cases, and produce structured briefs without touching internal systems.

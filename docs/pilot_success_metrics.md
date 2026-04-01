@@ -2,13 +2,13 @@
 
 ## Purpose
 
-These metrics define whether the pilot is useful for analyst-assisted public-record review.
+These metrics define whether the environment is useful for analyst-assisted public-record review.
 
 They are intentionally operational and measurable.
 
 ## Core Outcomes
 
-The pilot is successful if analysts can:
+The environment is successful if analysts can:
 
 - find a record quickly
 - understand the evidence presented
@@ -55,7 +55,7 @@ The pilot is successful if analysts can:
 
 ## Demo Acceptance Thresholds
 
-For a small pilot, the following are reasonable acceptance thresholds:
+For a small deployment, the following are reasonable acceptance thresholds:
 
 - lookup and record opening work reliably in the browser
 - a case can be created in one step from a lookup result
@@ -65,7 +65,7 @@ For a small pilot, the following are reasonable acceptance thresholds:
 
 ## What Not To Measure
 
-Do not claim pilot success based on:
+Do not claim success based on:
 
 - fraud detection accuracy
 - automated case outcomes

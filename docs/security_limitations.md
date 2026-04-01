@@ -9,12 +9,12 @@ This MVP runs locally and stores workflow state in a local SQLite database.
 - No production authentication or role-based access control.
 - No encrypted secrets management beyond local environment handling.
 - No formal audit or logging pipeline outside the local case event log.
-- No government hosting accreditation.
+- No formal hosting accreditation.
 - No guarantee that public registry snapshots are current at the exact time of review.
 
 ## Safe positioning
 
-This product should be positioned as a pilot or proof-of-value workbench for analyst-assisted review.
+This product should be positioned as a scoped workbench for analyst-assisted review.
 
 ## Before production use
 

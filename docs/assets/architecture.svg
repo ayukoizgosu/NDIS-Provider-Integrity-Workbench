@@ -1,0 +1,60 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F1E6"/>
+      <stop offset="1" stop-color="#F2E5D4"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFF8F0" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#FFF5EA" stop-opacity="0.92"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1400" height="860" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#14312d" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" rx="30" fill="url(#bg)"/>
+  <text x="72" y="84" fill="#14312D" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="0.22em">SYSTEM OVERVIEW</text>
+  <text x="72" y="136" fill="#14312D" font-family="Georgia, serif" font-size="54" font-weight="700">NDIS Provider Integrity Workbench</text>
+  <text x="72" y="176" fill="#4E625E" font-family="Segoe UI, Arial, sans-serif" font-size="24">Public-record ingestion, analyst review, case management, and exportable brief generation.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="240" width="260" height="250" rx="28" fill="url(#panel)" stroke="#E4D4C1"/>
+    <rect x="470" y="240" width="260" height="250" rx="28" fill="url(#panel)" stroke="#E4D4C1"/>
+    <rect x="870" y="240" width="260" height="250" rx="28" fill="url(#panel)" stroke="#E4D4C1"/>
+    <rect x="270" y="560" width="260" height="130" rx="28" fill="url(#panel)" stroke="#E4D4C1"/>
+    <rect x="670" y="560" width="260" height="130" rx="28" fill="url(#panel)" stroke="#E4D4C1"/>
+  </g>
+
+  <text x="102" y="290" fill="#B15F31" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="0.18em">PUBLIC SOURCES</text>
+  <text x="102" y="338" fill="#14312D" font-family="Georgia, serif" font-size="34" font-weight="700">Registers And Notices</text>
+  <text x="102" y="386" fill="#304945" font-family="Segoe UI, Arial, sans-serif" font-size="23">NDIS Commission export</text>
+  <text x="102" y="420" fill="#304945" font-family="Segoe UI, Arial, sans-serif" font-size="23">ABR / ABN Lookup</text>
+  <text x="102" y="454" fill="#304945" font-family="Segoe UI, Arial, sans-serif" font-size="23">ASIC dataset snapshots</text>
+
+  <text x="502" y="290" fill="#B15F31" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="0.18em">PROCESSING LAYER</text>
+  <text x="502" y="338" fill="#14312D" font-family="Georgia, serif" font-size="34" font-weight="700">Matching And Refresh</text>
+  <text x="502" y="386" fill="#304945" font-family="Segoe UI, Arial, sans-serif" font-size="23">Entity resolution</text>
+  <text x="502" y="420" fill="#304945" font-family="Segoe UI, Arial, sans-serif" font-size="23">Related-business detection</text>
+  <text x="502" y="454" fill="#304945" font-family="Segoe UI, Arial, sans-serif" font-size="23">Live register refresh</text>
+
+  <text x="902" y="290" fill="#B15F31" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="0.18em">REVIEW APPLICATION</text>
+  <text x="902" y="338" fill="#14312D" font-family="Georgia, serif" font-size="34" font-weight="700">Case Desk</text>
+  <text x="902" y="386" fill="#304945" font-family="Segoe UI, Arial, sans-serif" font-size="23">Lookup and case creation</text>
+  <text x="902" y="420" fill="#304945" font-family="Segoe UI, Arial, sans-serif" font-size="23">Agent-prepared summaries</text>
+  <text x="902" y="454" fill="#304945" font-family="Segoe UI, Arial, sans-serif" font-size="23">Human-reviewed decisions</text>
+
+  <text x="302" y="610" fill="#B15F31" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="0.18em">PERSISTENCE</text>
+  <text x="302" y="652" fill="#14312D" font-family="Georgia, serif" font-size="32" font-weight="700">SQLite Case Store</text>
+
+  <text x="702" y="610" fill="#B15F31" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="0.18em">OUTPUTS</text>
+  <text x="702" y="652" fill="#14312D" font-family="Georgia, serif" font-size="32" font-weight="700">Briefs And Static Docs</text>
+
+  <path d="M330 365H450" stroke="#C56B37" stroke-width="8" stroke-linecap="round"/>
+  <path d="M730 365H850" stroke="#C56B37" stroke-width="8" stroke-linecap="round"/>
+  <path d="M600 490V540" stroke="#1F4A43" stroke-width="8" stroke-linecap="round"/>
+  <path d="M600 540H400V560" stroke="#1F4A43" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M600 540H800V560" stroke="#1F4A43" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="450" cy="365" r="10" fill="#C56B37"/>
+  <circle cx="850" cy="365" r="10" fill="#C56B37"/>
+  <circle cx="600" cy="540" r="10" fill="#1F4A43"/>
+</svg>

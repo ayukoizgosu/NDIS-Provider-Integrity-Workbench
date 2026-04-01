@@ -2,20 +2,20 @@
 
 ## Purpose
 
-This pilot needs a simple support model that matches a small government discovery or proof-of-value engagement.
+This environment needs a simple support model that matches a small review deployment.
 
 ## Current Support Shape
 
 The current repository supports a local-first workflow:
 
-- one pilot environment
+- one deployment environment
 - one analyst-facing interface
 - public-record data only
 - human review only
 
 ## Operating Assumptions
 
-- One pilot team uses the workbench.
+- One review team uses the workbench.
 - One named owner is responsible for workflow decisions.
 - One technical operator is responsible for the local or hosted environment.
 - Issues are handled during business hours unless otherwise agreed.
@@ -24,8 +24,8 @@ The current repository supports a local-first workflow:
 
 ### Product Owner
 
-- confirms pilot scope
-- approves pilot changes
+- confirms scope
+- approves changes
 - signs off on the demo narrative
 
 ### Analyst Lead
@@ -52,20 +52,20 @@ Support should explicitly exclude:
 
 ## Recommended Pilot Support Commitments
 
-For a pilot conversation, keep commitments modest:
+For an initial deployment conversation, keep commitments modest:
 
-- response within one business day for pilot issues
-- weekly check-in with the buyer
+- response within one business day for operational issues
+- weekly check-in with the team lead
 - one agreed demo environment
 - one agreed dataset refresh cadence
 - one agreed contact point for issues
 
 ## Escalation Path
 
-If the pilot reveals a useful workflow, the next step should be a formal scope decision:
+If the deployment reveals a useful workflow, the next step should be a formal scope decision:
 
 1. keep as a discovery tool
-2. extend to a controlled pilot
+2. extend to a controlled rollout
 3. plan production hardening separately
 
 ## What Buyers Need To Hear
@@ -75,5 +75,5 @@ The support model should make clear that:
 - the tool is maintained
 - the workflow is understandable
 - the evidence trail is readable
-- the pilot is bounded
+- the deployment is bounded
 - production readiness is a separate conversation

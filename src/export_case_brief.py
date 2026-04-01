@@ -493,7 +493,7 @@ def export_case_brief(
   </div>
 
   <div class="banner">
-    <strong>Limitations:</strong> This pilot relies on public records, heuristic entity matching, and public company dataset snapshots. Related-business leads are review prompts, not proof of phoenix activity or fraud.
+    <strong>Limitations:</strong> This workbench relies on public records, heuristic entity matching, and public company dataset snapshots. Related-business leads are review prompts, not proof of phoenix activity or fraud.
   </div>
 </body>
 </html>

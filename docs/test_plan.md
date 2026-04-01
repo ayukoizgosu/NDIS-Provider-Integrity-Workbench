@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This test plan covers the current pilot build and the minimum checks required before a government-facing demo.
+This test plan covers the current build and the minimum checks required before a hosted demonstration.
 
 ## Test Levels
 

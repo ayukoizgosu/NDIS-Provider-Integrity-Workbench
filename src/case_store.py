@@ -19,25 +19,25 @@ ALLOWED_STATUSES = ('New', 'In Review', 'Escalate', 'Monitor', 'Closed')
 ALLOWED_PRIORITIES = ('Low', 'Medium', 'High')
 ALLOWED_ROLES = ('Analyst', 'Manager', 'Admin')
 AGENT_REVIEW_STATUSES = ('Pending review', 'Accepted', 'Edited', 'Rejected')
-AGENT_ACTOR_NAME = 'Pilot Agent'
+AGENT_ACTOR_NAME = 'Rules Engine'
 
 DEMO_USERS = (
     {
         'username': 'analyst.demo',
         'display_name': 'Demo Analyst',
-        'email': 'analyst.demo@pilot.local',
+        'email': 'analyst.demo@local',
         'role': 'Analyst',
     },
     {
         'username': 'manager.demo',
         'display_name': 'Demo Manager',
-        'email': 'manager.demo@pilot.local',
+        'email': 'manager.demo@local',
         'role': 'Manager',
     },
     {
         'username': 'admin.demo',
         'display_name': 'Pilot Admin',
-        'email': 'admin.demo@pilot.local',
+        'email': 'admin.demo@local',
         'role': 'Admin',
     },
 )
@@ -830,7 +830,7 @@ def refresh_case_public_registers(
             file_name=snapshot_file_name,
             content_bytes=snapshot_markdown.encode('utf-8'),
             content_type='text/markdown',
-            uploaded_by=text_value(actor) or 'Pilot Agent',
+            uploaded_by=text_value(actor) or 'Rules Engine',
         )
 
     return get_case(case_id)
