@@ -261,31 +261,85 @@ def inject_css() -> None:
         }
 
         .block-container {
-            padding-top: 1.25rem;
-            padding-bottom: 2rem;
+            padding-top: 1rem;
+            padding-bottom: 2.4rem;
+            max-width: 1320px;
         }
 
         .hero-shell {
             background: linear-gradient(135deg, rgba(20, 49, 45, 0.96), rgba(27, 72, 66, 0.92));
             border: 1px solid rgba(20, 49, 45, 0.08);
             border-radius: 28px;
-            padding: 1.5rem 1.6rem 1.35rem 1.6rem;
+            padding: 1.65rem 1.7rem 1.5rem 1.7rem;
             color: #f8f2e8;
             box-shadow: 0 18px 40px rgba(20, 49, 45, 0.14);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: rgba(248, 242, 232, 0.72);
+            margin-bottom: 0.55rem;
         }
 
         .hero-title {
-            font-size: 2.25rem;
+            font-size: 2.45rem;
             color: #f8f2e8;
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.45rem;
         }
 
         .hero-copy {
             font-size: 1rem;
             color: rgba(248, 242, 232, 0.88);
-            max-width: 58rem;
-            line-height: 1.5;
+            max-width: 52rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .hero-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(255, 248, 238, 0.12);
+            border: 1px solid rgba(255, 248, 238, 0.14);
+            font-size: 0.92rem;
+            line-height: 1.2;
+            color: rgba(255, 248, 238, 0.96);
+        }
+
+        .hero-chip strong {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.1rem;
+            color: #fff8ee;
+        }
+
+        .sidebar-note {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: rgba(248, 242, 232, 0.8);
+            margin: 0.15rem 0 0.9rem 0;
+        }
+
+        section[data-testid="stSidebar"] [data-testid="stForm"] {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 0.7rem 0.75rem 0.8rem 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        section[data-testid="stSidebar"] .stCaption {
+            color: rgba(248, 242, 232, 0.8) !important;
         }
 
         .metric-card {
@@ -413,6 +467,57 @@ def inject_css() -> None:
             line-height: 1.45;
         }
 
+        .form-shell {
+            background: rgba(255, 250, 244, 0.82);
+            border: 1px solid rgba(20, 49, 45, 0.08);
+            border-radius: 20px;
+            padding: 1rem 1.1rem 0.4rem 1.1rem;
+            box-shadow: 0 12px 24px rgba(59, 48, 40, 0.05);
+        }
+
+        .form-shell h4 {
+            margin: 0 0 0.9rem 0;
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.45rem;
+            color: #173734;
+        }
+
+        .section-heading {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.85rem;
+            color: #14312d;
+            margin: 0.2rem 0 0.15rem 0;
+        }
+
+        .section-subcopy {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #526562;
+            margin: 0 0 0.9rem 0;
+        }
+
+        .compact-card {
+            background: rgba(255, 250, 244, 0.78);
+            border: 1px solid rgba(20, 49, 45, 0.08);
+            border-radius: 18px;
+            padding: 0.95rem 1rem;
+            box-shadow: 0 10px 20px rgba(59, 48, 40, 0.04);
+        }
+
+        .compact-card h5 {
+            margin: 0 0 0.55rem 0;
+            font-size: 1rem;
+            font-family: "Fraunces", Georgia, serif;
+            color: #173734;
+        }
+
+        .compact-card p {
+            margin: 0;
+            font-size: 0.94rem;
+            line-height: 1.55;
+            color: #425652;
+        }
+
         [data-testid="stDataFrame"] {
             border-radius: 18px;
             overflow: hidden;
@@ -424,6 +529,15 @@ def inject_css() -> None:
         div[data-baseweb="input"] > div,
         .stMultiSelect div[data-baseweb="tag"] {
             border-radius: 14px;
+        }
+
+        .stTextInput input,
+        .stTextArea textarea,
+        .stDateInput input,
+        .stSelectbox [data-baseweb="select"] > div,
+        .stMultiSelect [data-baseweb="select"] > div {
+            background: rgba(255, 252, 247, 0.94) !important;
+            border: 1px solid rgba(20, 49, 45, 0.12) !important;
         }
 
         div[data-testid="stRadio"] > div {
@@ -451,6 +565,28 @@ def inject_css() -> None:
             border-radius: 14px;
             min-height: 44px;
             font-weight: 600;
+        }
+
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 0.45rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .stTabs [data-baseweb="tab"] {
+            background: rgba(255, 250, 244, 0.82);
+            border: 1px solid rgba(20, 49, 45, 0.08);
+            border-radius: 999px;
+            padding: 0.55rem 0.95rem;
+            height: auto;
+        }
+
+        .stTabs [aria-selected="true"] {
+            background: #173734 !important;
+            border-color: #173734 !important;
+        }
+
+        .stTabs [aria-selected="true"] p {
+            color: #f8f2e8 !important;
         }
         </style>
         """,
@@ -806,6 +942,8 @@ def render_ranked_bar_chart(title: str, note: str, counts: pd.Series, color: str
                 labelFontSize=12,
                 values=axis_values,
                 format=",.0f",
+                labelFlush=True,
+                labelFlushOffset=8,
             ),
         ),
         tooltip=[
@@ -832,7 +970,7 @@ def render_ranked_bar_chart(title: str, note: str, counts: pd.Series, color: str
 
     chart = (
         (bars + labels)
-        .properties(height=chart_height)
+        .properties(height=chart_height, padding={"left": 0, "right": 28, "top": 0, "bottom": 0})
         .configure_view(stroke=None)
         .configure(background="transparent")
     )
