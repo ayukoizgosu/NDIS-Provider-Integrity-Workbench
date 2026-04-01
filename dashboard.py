@@ -5,6 +5,7 @@ from html import escape
 from pathlib import Path
 from typing import Any, Mapping
 
+import altair as alt
 import pandas as pd
 import streamlit as st
 
@@ -288,12 +289,27 @@ def inject_css() -> None:
         }
 
         .metric-card {
-            background: rgba(255, 250, 244, 0.84);
-            border: 1px solid rgba(20, 49, 45, 0.1);
-            border-radius: 20px;
-            padding: 1rem 1rem 0.9rem 1rem;
-            box-shadow: 0 14px 28px rgba(59, 48, 40, 0.06);
-            min-height: 132px;
+            background: linear-gradient(180deg, rgba(255, 250, 244, 0.96), rgba(255, 246, 236, 0.86));
+            border: 1px solid rgba(20, 49, 45, 0.08);
+            border-radius: 22px;
+            padding: 1rem 1rem 1rem 1rem;
+            box-shadow: 0 14px 28px rgba(59, 48, 40, 0.05);
+            min-height: 144px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 0.35rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto auto 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(201, 109, 63, 0.95), rgba(31, 74, 67, 0.7));
         }
 
         .metric-label {
@@ -306,16 +322,17 @@ def inject_css() -> None:
 
         .metric-value {
             font-family: "Fraunces", Georgia, serif;
-            font-size: 1.85rem;
+            font-size: 2rem;
             line-height: 1.1;
             color: #173734;
-            margin-bottom: 0.45rem;
+            margin-bottom: 0.2rem;
         }
 
         .metric-note {
             font-size: 0.92rem;
             color: #425652;
             line-height: 1.45;
+            margin-top: auto;
         }
 
         .section-note {
@@ -326,6 +343,32 @@ def inject_css() -> None:
             color: #30413f;
             margin: 0.5rem 0 1rem 0;
             line-height: 1.5;
+        }
+
+        .chart-shell {
+            margin: 0.25rem 0 0.25rem 0;
+        }
+
+        .chart-heading {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.6rem;
+            color: #14312d;
+            margin: 0 0 0.2rem 0;
+        }
+
+        .chart-copy {
+            font-size: 0.92rem;
+            color: #526562;
+            margin: 0 0 0.65rem 0;
+            line-height: 1.45;
+        }
+
+        div[data-testid="stVegaLiteChart"] {
+            background: linear-gradient(180deg, rgba(255, 250, 244, 0.9), rgba(255, 246, 236, 0.8));
+            border: 1px solid rgba(20, 49, 45, 0.08);
+            border-radius: 22px;
+            padding: 0.8rem 0.9rem 0.4rem 0.7rem;
+            box-shadow: 0 14px 28px rgba(59, 48, 40, 0.05);
         }
 
         .detail-panel {
@@ -709,6 +752,88 @@ def metric_card(label: str, value: str, note: str) -> None:
     )
 
 
+def render_ranked_bar_chart(title: str, note: str, counts: pd.Series, color: str) -> None:
+    st.markdown(
+        f"""
+        <div class="chart-shell">
+            <div class="chart-heading">{escape(title)}</div>
+            <div class="chart-copy">{escape(note)}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    if counts.empty:
+        st.info("No records are in the current filtered view.")
+        return
+
+    chart_data = counts.reset_index()
+    chart_data.columns = ["category_full", "count"]
+    chart_data["count"] = pd.to_numeric(chart_data["count"], errors="coerce").fillna(0)
+    chart_data["category"] = chart_data["category_full"].map(lambda value: truncate_text(value, 28))
+
+    max_count = max(float(chart_data["count"].max()), 1.0)
+    chart_height = max(250, len(chart_data.index) * 46)
+
+    base = alt.Chart(chart_data).encode(
+        y=alt.Y(
+            "category:N",
+            sort="-x",
+            axis=alt.Axis(
+                title=None,
+                domain=False,
+                ticks=False,
+                labelColor="#35504b",
+                labelFontSize=13,
+                labelFont="Space Grotesk",
+                labelLimit=280,
+                labelPadding=10,
+            ),
+        ),
+        x=alt.X(
+            "count:Q",
+            scale=alt.Scale(domain=[0, max_count * 1.18]),
+            axis=alt.Axis(
+                title=None,
+                domain=False,
+                tickColor="#d4c2ad",
+                gridColor="#dccdb9",
+                labelColor="#6b746f",
+                labelFontSize=12,
+                format=",",
+            ),
+        ),
+        tooltip=[
+            alt.Tooltip("category_full:N", title="Category"),
+            alt.Tooltip("count:Q", title="Count", format=","),
+        ],
+    )
+
+    bars = base.mark_bar(
+        color=color,
+        cornerRadiusTopRight=10,
+        cornerRadiusBottomRight=10,
+        size=28,
+    )
+    labels = base.mark_text(
+        align="left",
+        baseline="middle",
+        dx=8,
+        color="#173734",
+        font="Space Grotesk",
+        fontSize=12,
+        fontWeight=700,
+    ).encode(text=alt.Text("count:Q", format=","))
+
+    chart = (
+        (bars + labels)
+        .properties(height=chart_height)
+        .configure_view(stroke=None)
+        .configure(background="transparent")
+    )
+    st.altair_chart(chart, use_container_width=True)
+
+
 def detail_panel(title: str, rows: list[tuple[str, str]]) -> None:
     html_rows = "".join(
         f"""
@@ -1086,9 +1211,13 @@ def render_overview(
 
     chart_col1, chart_col2 = st.columns(2)
     with chart_col1:
-        st.subheader("Action Types In View")
         if profiles.empty:
-            st.info("No records are in the current filtered view.")
+            render_ranked_bar_chart(
+                "Action Types In View",
+                "Distribution of the most serious enforcement action in the current result set.",
+                pd.Series(dtype=float),
+                "#d8783f",
+            )
         else:
             action_counts = (
                 profiles["most_severe_action"]
@@ -1098,12 +1227,21 @@ def render_overview(
                 .value_counts()
                 .sort_values(ascending=False)
             )
-            st.bar_chart(action_counts)
+            render_ranked_bar_chart(
+                "Action Types In View",
+                "Distribution of the most serious enforcement action in the current result set.",
+                action_counts,
+                "#d8783f",
+            )
 
     with chart_col2:
-        st.subheader("Match Outcomes")
         if profiles.empty:
-            st.info("No records are in the current filtered view.")
+            render_ranked_bar_chart(
+                "Match Outcomes",
+                "How records in the current view were linked to public business identifiers.",
+                pd.Series(dtype=float),
+                "#1f6ec0",
+            )
         else:
             match_counts = (
                 profiles["match_confidence"]
@@ -1113,7 +1251,12 @@ def render_overview(
                 .value_counts()
                 .sort_values(ascending=False)
             )
-            st.bar_chart(match_counts)
+            render_ranked_bar_chart(
+                "Match Outcomes",
+                "How records in the current view were linked to public business identifiers.",
+                match_counts,
+                "#1f6ec0",
+            )
 
     st.subheader("Top Items To Check")
     if review_queue.empty:
