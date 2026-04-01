@@ -774,6 +774,10 @@ def render_ranked_bar_chart(title: str, note: str, counts: pd.Series, color: str
 
     max_count = max(float(chart_data["count"].max()), 1.0)
     chart_height = max(250, len(chart_data.index) * 46)
+    tick_candidates = [10, 20, 25, 50, 100, 200, 250, 500, 1000]
+    tick_step = next((step for step in tick_candidates if max_count / step <= 6), tick_candidates[-1])
+    axis_limit = int(((max_count * 1.12) + tick_step - 1) // tick_step) * tick_step
+    axis_values = list(range(0, axis_limit + tick_step, tick_step))
 
     base = alt.Chart(chart_data).encode(
         y=alt.Y(
@@ -792,7 +796,7 @@ def render_ranked_bar_chart(title: str, note: str, counts: pd.Series, color: str
         ),
         x=alt.X(
             "count:Q",
-            scale=alt.Scale(domain=[0, max_count * 1.18]),
+            scale=alt.Scale(domain=[0, axis_limit]),
             axis=alt.Axis(
                 title=None,
                 domain=False,
@@ -800,7 +804,8 @@ def render_ranked_bar_chart(title: str, note: str, counts: pd.Series, color: str
                 gridColor="#dccdb9",
                 labelColor="#6b746f",
                 labelFontSize=12,
-                format=",",
+                values=axis_values,
+                format=",.0f",
             ),
         ),
         tooltip=[
