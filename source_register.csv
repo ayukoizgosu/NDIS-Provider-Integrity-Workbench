@@ -1,0 +1,9 @@
+source_key,source_name,source_url,access,format,priority,zero_spend_status,implemented_now,notes
+ndis_enforcement_export,NDIS Commission enforcement export CSV,https://www.ndiscommission.gov.au/about-us/compliance-and-enforcement/compliance-actions/search/export,public,csv,must_have,in_scope,yes,Preferred Sprint 1 source because the live export endpoint currently returns CSV.
+ndis_enforcement_search,NDIS Commission enforcement search page,https://www.ndiscommission.gov.au/about-us/compliance-and-enforcement/compliance-actions/search,public,html,must_have,in_scope,yes,Fallback source if the CSV export changes or disappears.
+abn_lookup_webservices,ABN Lookup web services,https://abr.business.gov.au/Tools/WebServices,free_registration,json_or_soap,must_have,in_scope,yes,Requires free GUID registration. Script supports it when available.
+abn_lookup_public_search,ABN Lookup public search,https://abr.business.gov.au/Search/Index,public,html,must_have,in_scope,yes,Used as a no-cost fallback before GUID registration completes.
+asic_companies_dataset,ASIC company dataset,https://data.gov.au/data/dataset/asic-companies,public,csv_or_zip,must_have,in_scope,yes,Current resource metadata can be fetched via the CKAN API without payment.
+ndis_quarterly_reports,NDIS quarterly reports,https://www.ndis.gov.au/about-us/publications/quarterly-reports,public,pdf_or_csv,nice_to_have,in_scope,no,Reserved for denominator and context stats.
+austlii_art_ndis,AustLII ART or AAT NDIS decisions,https://www.austlii.edu.au/,public,html,nice_to_have,in_scope,no,Deferred because it is supplementary signal and not required for the public-data MVP core.
+asic_director_extracts,ASIC director extracts,https://asic.gov.au/,paid,pdf,deferred,out_of_scope,no,Explicitly excluded to keep spend at zero. Do not use in this scaffold.

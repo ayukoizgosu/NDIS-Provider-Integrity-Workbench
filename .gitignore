@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+raw/**
+!raw/
+!raw/**/
+!raw/**/.gitkeep
+normalized/*.csv
+normalized/*.parquet
+features/*.csv
+features/*.parquet
+output/*.csv
+output/case_briefs/
+data/*.db
+data/attachments/
